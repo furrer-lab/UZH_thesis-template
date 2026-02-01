@@ -215,8 +215,14 @@
 \RequirePackage{caption} % Required for customising the captions
 \captionsetup{justification=centerlast,font=small,labelfont=sc,margin=50pt}
 
+\RequirePackage{catchfile} % Required to read the git information
+\RequirePackage{xstring} % Required to manipulate strings
 
+\RequirePackage{acronym} % Required for printing text acronyms (e.g. Paper Titles)
 
+\RequirePackage{cprotect} % Required for verbatim text in the list of abbreviations or captions
+
+\RequirePackage{epigraph} % Required for epigraphs
 %----------------------------------------------------------------------------------------
 %   DEFINE CUSTOM THESIS INFORMATION COMMANDS
 %----------------------------------------------------------------------------------------
@@ -227,8 +233,13 @@
  \def\ttitle{#2}%
 }
 \NewDocumentCommand{\thesistype}{m}{\newcommand{\ttype}{#1}}
+\NewDocumentCommand{\drafting}{m}{\newcommand{\draft}{#1}}
 \NewDocumentCommand{\thesisdate}{m}{\newcommand{\tdate}{#1}}
 \DeclareDocumentCommand{\author}{m}{\newcommand{\authorname}{#1}\renewcommand{\@author}{#1}}
+\NewDocumentCommand{\authorPOB}{m}{\newcommand{\authPOB}{#1}}
+\NewDocumentCommand{\authorCOO}{m}{\newcommand{\authCOO}{#1}}
+\NewDocumentCommand{\placeofsubmission}{m}{\newcommand{\placeofsub}{#1}}
+\NewDocumentCommand{\dateofsubmission}{m}{\newcommand{\datofsub}{#1}}
 \NewDocumentCommand{\supervisorA}{m}{\newcommand{\supnameA}{#1}}
 \NewDocumentCommand{\supervisorAmail}{m}{\newcommand{\supmailA}{#1}}
 \NewDocumentCommand{\supervisorAweb}{m}{\newcommand{\supwebA}{#1}}
@@ -237,6 +248,14 @@
 \NewDocumentCommand{\supervisorBmail}{m}{\newcommand{\supmailB}{#1}}
 \NewDocumentCommand{\supervisorBweb}{m}{\newcommand{\supwebB}{#1}}
 \NewDocumentCommand{\supervisorBinfo}{m}{\newcommand{\supinfoB}{#1}}
+\NewDocumentCommand{\supervisorC}{m}{\newcommand{\supnameC}{#1}}
+\NewDocumentCommand{\supervisorCmail}{m}{\newcommand{\supmailC}{#1}}
+\NewDocumentCommand{\supervisorCweb}{m}{\newcommand{\supwebC}{#1}}
+\NewDocumentCommand{\supervisorCinfo}{m}{\newcommand{\supinfoC}{#1}}
+\NewDocumentCommand{\supervisorD}{m}{\newcommand{\supnameD}{#1}}
+\NewDocumentCommand{\supervisorDmail}{m}{\newcommand{\supmailD}{#1}}
+\NewDocumentCommand{\supervisorDweb}{m}{\newcommand{\supwebD}{#1}}
+\NewDocumentCommand{\supervisorDinfo}{m}{\newcommand{\supinfoD}{#1}}
 \NewDocumentCommand{\examiner}{m}{\newcommand{\examname}{#1}}
 \NewDocumentCommand{\degree}{m}{\newcommand{\degreename}{#1}}
 \NewDocumentCommand{\studyprogram}{m}{\newcommand{\studyprog}{#1}}
@@ -286,6 +305,20 @@
     % nothing
 }
 
+%-----------------------------------------------------------------------------------------
+%   Fixed-width interword space
+%-----------------------------------------------------------------------------------------
+\newcommand{\fixedspaceword}[2][1]{%
+  \begingroup
+  \spaceskip=#1\fontdimen2\font minus \fontdimen4\font
+  \xspaceskip=0pt\relax % just to be sure
+  #2%
+  \endgroup
+}
+% Usage:
+% \fixedspaceword{probabilistic graphical model}
+% \fixedspaceword[0.75]{probabilistic graphical model} % For narrower interword space
+% Source: https://tex.stackexchange.com/a/99571/164936
 %----------------------------------------------------------------------------------------
 %   COLOURS
 %----------------------------------------------------------------------------------------
@@ -378,20 +411,27 @@ KOMA-script documentation for details.}]{fancyhdr}
 }
 
 %----------------------------------------------------------------------------------------
-%   ABBREVIATIONS PAGE DESIGN
+%   GLOSSARIES
 %----------------------------------------------------------------------------------------
+\RequirePackage[acronym, toc, nonumberlist]{glossaries}
 
-\newcommand{\abbrevname}{List of Abbreviations}
-\providecaptionname{english,british,american}{\abbrevname}{List of Abbreviations}
-\providecaptionname{ngerman,german,austrian,naustrian}{\abbrevname}{Abk\"urzungsverzeichnis}
-\NewDocumentEnvironment{abbreviations}{ m }{%
-    \ifbool{nolistspace}{\begingroup\singlespacing}{}
-    \ifbool{listtoc}{\addchap{\abbrevname}}{\addchap*{\abbrevname}}
-    \begin{longtable}{#1}
-    }{%
-    \end{longtable}
-    \addtocounter{table}{-1}% Don't count this table as one of the document tables
-    \ifbool{nolistspace}{\endgroup}{}
+% Ensure glossaries are made
+\makeglossaries
+% Define glossary style (see also https://tex.stackexchange.com/a/197226/164936)
+\setglossarystyle{super} % Style overview: https://www.dickimaw-books.com/gallery/glossaries-styles/
+\glsdescwidth=0.9\textwidth % Sets the width of the description column in the glossary
+
+% Define commands to print glossaries
+\newcommand{\printabbreviations}{
+    \printglossary[type=\acronymtype, title=Abbreviations, toctitle=Abbreviations]
+}
+
+\newcommand{\printconstants}{
+    \printglossary[title=Physical Constants, toctitle=Physical Constants]
+}
+
+\newcommand{\printsymbols}{
+    \printglossary[title=Symbols, toctitle=Symbols]
 }
 
 %----------------------------------------------------------------------------------------
@@ -527,12 +567,34 @@ KOMA-script documentation for details.}]{fancyhdr}
         \checktoopen
         \tttypeout{\authorshipname}
         \thispagestyle{plain}
-        \null\vfil
+        \null\vfill
         \begin{center}{\Huge\textit{\authorshipname}\par}\end{center}
         \bigskip
     }{}
 }
 
+%----------------------------------------------------------------------------------------
+%   DECLARATION of Generative AI Usage PAGE DESIGN
+%----------------------------------------------------------------------------------------
+
+\newcommand{\authorshipnameGenAI}{Generative AI Disclosure}
+\providecaptionname{american,australian,british,canadian,english,newzealand,UKenglish,USenglish}{\authorshipnameGenAI}{Generative AI Disclosure} % Declaration of Authorship text for English countries
+\providecaptionname{german,ngerman,austrian,naustrian}{\authorshipnameGenAI}{Generative KI Offenlegung} % Declaration of Authorship text for Germanic countries
+
+\ifbool{consistentlayout}{
+    \DeclareDocumentEnvironment{declarationGenAI}{}{
+        \addchap*{\authorshipnameGenAI}
+        }{}%
+}{
+    \DeclareDocumentEnvironment{declarationGenAI}{}{
+        \checktoopen
+        \tttypeout{\authorshipnameGenAI}
+        \thispagestyle{plain}
+        \null\vfill
+        \begin{center}{\Huge\textit{\authorshipnameGenAI}\par}\end{center}
+        \bigskip
+    }{}
+}
 
 %----------------------------------------------------------------------------------------
 %   DEDICATION PAGE DESIGN
@@ -541,11 +603,25 @@ KOMA-script documentation for details.}]{fancyhdr}
     \checktoopen
     \tttypeout{Dedicatory}
     \thispagestyle{empty}
-    \null\vfil
+    \null\vfill
     \begin{center}{\Large\slshape #1}\end{center}
-    \vfil\null
+    \vfill\null
 }
 
+%----------------------------------------------------------------------------------------
+%   EPIGRAPH/QUOTE PAGE DESIGN
+%----------------------------------------------------------------------------------------
+\setlength\epigraphwidth{.58\textwidth}
+\newcommand\printepigraph[3]{
+    \checktoopen
+    \tttypeout{Epigraph}
+    \thispagestyle{empty}
+    \null\vfill
+    \begin{center}
+        {\epigraph{#1}{#2, \textit{"#3"}}}
+    \end{center}
+    \vfill\null
+}
 
 %----------------------------------------------------------------------------------------
 %   PHYSICAL CONSTANTS PAGE DESIGN
@@ -611,6 +687,45 @@ breaklinks=true,
 }
 
 %----------------------------------------------------------------------------------------
+%   Git Information for draft version
+%----------------------------------------------------------------------------------------
+
+\IfFileExists{.git/HEAD}{%
+    \CatchFileDef{\headfull}{.git/HEAD}{}
+    \StrGobbleRight{\headfull}{1}[\head]
+    \IfSubStr{\head}{ref:}{%
+        \StrBehind[2]{\head}{/}[\branch]
+        \IfFileExists{.git/refs/heads/\branch}{%
+            \CatchFileDef{\commit}{.git/refs/heads/\branch}{}
+        }{%
+            \IfFileExists{.git/packed-refs}{%
+                \CatchFileDef{\packedrefs}{.git/packed-refs}{}
+                \StrCut{\packedrefs}{refs/heads/\branch}{\commit}
+            }{%
+                \providecommand{\commit}{unknown}
+            }%
+        }%
+    }{%
+        \StrGobbleRight{\head}{1}[\commit]
+    }%
+}{%
+    \immediate\write18{git show-ref --head --hash | head -n 1 > HEAD.tmp}% requires calling pdflatex with -shell-escape
+    \CatchFileDef{\headcommit}{HEAD.tmp}{}
+    \StrGobbleRight{\headcommit}{1}[\commit]
+    \immediate\write18{rm HEAD.tmp}%
+    \ifdefempty{\commit}{%
+        \providecommand{\commit}{unknown}
+    }{%
+        % nothing
+    }%
+}
+
+%----------------------------------------------------------------------------------------
+% Uppercase Roman numerals
+%----------------------------------------------------------------------------------------
+
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
 
 \endinput
 % lazyLizardTracer

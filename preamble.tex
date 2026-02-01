@@ -28,6 +28,13 @@
 %\usepackage[scaled]{helvet}
 
 %----------------------------
+%   Microtypography
+%----------------------------
+\usepackage{microtype}        % Simply loading the package with basic settings is often sufficient
+\widowpenalty=10000             % Prevents widows (single lines at the top of a page) (see https://en.wikibooks.org/wiki/LaTeX/Page_Layout#Widows_and_orphans)
+\clubpenalty=10000              % Prevents orphans (single lines at the bottom of a page)
+
+%----------------------------
 %   Environments
 %----------------------------
 
@@ -36,6 +43,7 @@
 \usepackage{makecell}          % Per-cell formatting in tables (\makecell)
 \usepackage{pdfpages}          % Required to include PDF files/graphics (\includepdf)
 
+\usepackage[colorinlistoftodos]{todonotes}         % Introduces the command \todo
 \usepackage{todonotes}         % Introduces the command \todo
 \setlength{\marginparwidth}{2.5cm} % Adjust this if the todo notes are out of margins
 
@@ -114,12 +122,43 @@
 \usepackage[
     backend=biber,             % Use biber backend (an external tool)
     sorting=none,              % Enumerates the reference in order of their appearance
-    style=numeric-comp         % Choose here your preferred citation style
+    % style=numeric-comp         % Choose here your preferred citation style
+    style=chem-acs
 ]{biblatex}
 \addbibresource{example.bib}   % The filename of the bibliography
 \usepackage[autostyle=true]{csquotes} 
                                % Required to generate language-dependent quotes 
                                % in the bibliography
+
+%----------------------------
+%   Glossaries
+%----------------------------
+
+% Load glossaries 
+\input{Front/abbreviations}
+
+%----------------------------
+%   Citation Format
+%----------------------------
+% See also https://latex-tutorial.com/caption-customization-latex/
+% \renewcommand{\figurename}{Fig.}
+\renewcommand{\thefigure}{Fig.~\arabic{figure}}
+\renewcommand{\theequation}{Eq.~\arabic{equation}}
+\renewcommand{\thetable}{Tab.~\arabic{table}}
+% \renewcommand{\thesection}{\arabic{section}}
+\DeclareCaptionLabelFormat{custom}
+{%
+      \textbf{#2}
+}
+
+\DeclareCaptionFormat{custom}
+{%
+    \textbf{#1#2}\textit{\small #3} % symbols #1, #2, and #3 are replaced with the caption label, the separator, and the text,
+}
+\captionsetup{format=custom,
+              labelformat=custom}
+
+
 
 %----------------------------------------------------------------------------------------
 %   MARGIN SETTINGS
@@ -138,3 +177,22 @@
 \usepackage{enumitem}          % Layout control for list environments (e.g, itemize)
 %\setlist{noitemsep}           % Suppress extra spaces between items
 %\setlist{nosep}               % Suppress spaces before/after list environments
+
+%----------------------------------------------------------------------------------------
+%   TITLEPAGE SETTINGS
+%----------------------------------------------------------------------------------------
+
+\usepackage{ifthen}
+\usepackage{xstring}
+\usepackage{tikz}
+
+%----------------------------------------------------------------------------------------
+%   TOC SETTINGS
+%----------------------------------------------------------------------------------------
+
+\usepackage[nottoc,numbib]{tocbibind}
+% \settocbibname{References} % To change the name of the bibliography in the TOC
+%----------------------------------------------------------------------------------------
+%   FOOTNOTES
+%----------------------------------------------------------------------------------------
+\renewcommand{\thefootnote}{\roman{footnote}} % Change footnote numbering to roman numerals

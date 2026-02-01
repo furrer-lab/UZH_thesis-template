@@ -1,0 +1,383 @@
+% !TEX root = ../main.tex
+
+% ==============================================================================
+% PAPER OVERVIEW CHAPTER TEMPLATE
+% ==============================================================================
+% This template provides both instructions and a complete example structure for
+% creating a comprehensive Paper Overview chapter for cumulative dissertations.
+% 
+% USAGE INSTRUCTIONS:
+% 1. Replace all placeholder text with your actual content
+% 2. Adjust the number of papers as needed (add or remove sections)
+% 3. Update acronym definitions with your paper titles and authors
+% 4. Ensure DOIs and publication status are current
+% 5. Remove these instruction comments when finalizing
+% ==============================================================================
+
+\section*{Template Instructions}
+
+\subsection*{About This Chapter}
+
+This chapter provides comprehensive summaries of all papers included in the thesis. It helps readers understand your contributions without reading the full papers. Each paper summary typically spans 2 to 4 pages and includes the abstract, scientific contributions, and author contributions.
+
+\subsection*{Step 1: Define Paper Acronyms}
+
+Before the \texttt{\textbackslash chapter} command, define acronyms for paper titles and authors. This allows easy reference throughout the thesis using the \texttt{\textbackslash acl\{\}} command:
+
+\begin{verbatim}
+\newacro{paper1title}{Your First Paper Title Here}
+\newacro{paper1authors}{First Author, Second Author, Third Author}
+\newacro{paper2title}{Your Second Paper Title Here}
+\newacro{paper2authors}{First Author, Fourth Author, Fifth Author}
+\newacro{paper3title}{Your Third Paper Title Here}
+\newacro{paper3authors}{First Author, Second Author, Sixth Author}
+\end{verbatim}
+
+Add more definitions if you have more than three papers.
+
+\subsection*{Step 2: Write Introductory Statement}
+
+Begin with a brief paragraph stating how many manuscripts are included and what information follows. Example: "This thesis consists of three manuscripts. Their contents are briefly summarized below with abstract, scientific contributions, and authors' contributions."
+
+\subsection*{Step 3: Structure Each Paper Section}
+
+For each paper, include:
+
+\textbf{Paper Header:}
+\begin{itemize}
+    \item Section title with Roman numeral (I, II, III) and hyperlink to paper chapter
+    \item Paper title in sans-serif bold: \texttt{\textbackslash textsf\{\textbackslash bf\textbackslash acl\{paperNtitle\}\}}
+    \item Author list in italics: \texttt{\textbackslash textit\{\textbackslash acl\{paperNauthors\}\}}
+    \item Publication status (DOI for published, status for unpublished)
+\end{itemize}
+
+\textbf{Abstract:}
+Copy the exact abstract from your paper. Use \texttt{\textbackslash noindent\textbackslash textbf\{\textbackslash textsf\{Abstract:\}\}\~{}} to format the heading.
+
+\textbf{Scientific Contributions:}
+Describe 3-5 key scientific contributions. Address:
+\begin{itemize}
+    \item What is novel about your work
+    \item What problem it solves
+    \item What methodological frameworks you introduce
+    \item How it addresses specific challenges
+    \item What insights conventional approaches miss
+    \item How it provides foundation for future work
+\end{itemize}
+
+Use \texttt{\textbackslash newline} to separate paragraphs for better readability.
+
+\textbf{Authors Contributions:}
+List each author in italics with their specific contributions using CRediT taxonomy roles:
+Conceptualization, Methodology, Software, Validation, Formal Analysis, Investigation, Resources, Data Curation, Writing (Original Draft), Writing (Review \& Editing), Visualization, Supervision, Project Administration, Funding.
+
+\subsection*{Publication Status Formatting}
+
+For \textbf{published papers}:
+\begin{verbatim}
+\noindent\href{https://doi.org/YOUR-DOI}{doi:YOUR-DOI}
+\end{verbatim}
+
+For \textbf{submitted papers}:
+\begin{verbatim}
+\textit{Submitted Manuscript}
+\end{verbatim}
+
+For \textbf{papers in preparation}:
+\begin{verbatim}
+\textit{In Preparation}
+\end{verbatim}
+
+\subsection*{Formatting Tips}
+
+\begin{itemize}
+    \item Maintain consistent formatting across all papers
+    \item Use same fonts and spacing throughout
+    \item Keep abstract lengths comparable when possible
+    \item Ensure all hyperlinks work (compile twice for references)
+    \item Match labels with actual paper chapter labels for working hyperlinks
+    \item Consider including figures if they add significant value
+\end{itemize}
+
+\subsection*{Common Variations}
+
+Depending on your field and university requirements, you may:
+\begin{itemize}
+    \item Include journal impact factors
+    \item Add publication timeline information
+    \item Include broader impact statements
+    \item Group papers by theme instead of chronologically
+    \item Add acceptance rates or conference rankings
+\end{itemize}
+
+Consult your advisor and university guidelines.
+
+% ==============================================================================
+% BEGIN TEMPLATE EXAMPLE STRUCTURE
+% ==============================================================================
+% The following shows the complete structure with placeholder content.
+% Replace all content between BEGIN and END markers with your actual information.
+% ==============================================================================
+
+% Define your paper acronyms here (place these BEFORE \chapter command)
+\newacro{paper1title}{Title of Your First Research Paper Goes Here}
+\newacro{paper1authors}{Your Name, Co-Author Name, Another Co-Author, Senior Author}
+\newacro{paper2title}{Title of Your Second Research Paper Goes Here}
+\newacro{paper2authors}{Your Name, Different Co-Author, Another Collaborator, Senior Author}
+\newacro{paper3title}{Title of Your Third Research Paper Goes Here}
+\newacro{paper3authors}{Your Name, Co-Author Name, International Collaborator, Multiple Authors, Consortium Name, Senior Author}
+
+\chapter{Paper Overview} 
+\label{PaperOverview} 
+
+% Introductory statement
+This thesis consists of three manuscripts.
+Their contents are briefly summarized below with abstract, scientific, and authors' contributions.
+
+% ==============================================================================
+% PAPER I
+% ==============================================================================
+
+\section[Paper \RNum{1}]{\hyperref[Paper1]{\color{black}{Paper \RNum{1} \small(p.~\pageref{Paper1})}}}
+\label{paperoverview:paper1}
+\vspace{7mm}
+\textsf{\bf\acl{paper1title}}
+\\[4mm]
+by \textit{\acl{paper1authors}}
+\\[2mm]
+% Choose one of the following publication status options:
+\noindent\href{https://doi.org/10.1234/your.doi.here}{doi:10.1234/your.doi.here}
+% OR for unpublished: \textit{Submitted Manuscript}
+% OR for in prep: \textit{In Preparation}
+
+\noindent\textbf{\textsf{Abstract:}}~%
+This is where you paste the complete abstract from your first paper. 
+The abstract should provide a concise summary of the research question, methodology, key findings, and implications. 
+Typically, abstracts range from 150 to 300 words depending on journal requirements.
+Describe the background and motivation for the study, the specific approach or methods employed, the main results obtained, and the broader significance of your findings.
+Avoid using complex LaTeX formatting within the abstract text itself.
+Keep it straightforward and readable.
+The abstract should be self-contained and give readers a clear understanding of what the paper contributes without requiring them to read the full manuscript.
+Include any key quantitative results, statistical significance, or performance metrics that highlight the importance of your work.
+
+\subsection*{Scientific Contributions}
+
+This study introduces [describe the novel application, method, or framework you developed].
+It focuses on [specific domain or problem area] and addresses [key research gap or challenge].
+\newline
+The research [describe what you compared, demonstrated, or validated]. 
+[Explain the main methodological innovation or approach].
+A framework for [specific contribution] is described, effectively [what problem it solves or what it enables].
+This approach ensures that [describe key properties or guarantees] while allowing [specific capabilities].
+\newline
+Additionally, the study [describe secondary contribution, e.g., demonstrates how to handle specific challenges].
+This addresses a common challenge in [domain], where [describe the problem your approach solves].
+\newline
+The results demonstrate that [summarize key findings]. 
+This [explain the significance - e.g., confirms, reveals, enables, improves] what conventional approaches may overlook or cannot achieve.
+This comparative analysis [positions your work relative to existing methods].
+\newline
+Furthermore, the paper showcases [additional contribution such as visualization, tool, or interpretability advance].
+This [explain the benefit, e.g., facilitates clinical interpretation, improves transparency, enables wider adoption].
+\newline
+Ultimately, this research establishes a foundation for [future directions].
+Such advancements could [describe potential impact or applications].
+
+\subsection*{Authors Contributions}
+
+\textsl{Your Name} led the study's conceptualization, developed the methodology, implemented the software, performed the analysis, and prepared the manuscript.
+\newline
+\textsl{Co-Author Name} contributed to [specific role, e.g., conceptualization, methodology development, data curation] and participated in manuscript revision.
+\newline
+\textsl{Another Co-Author} provided [specific expertise or contribution, e.g., domain expertise, validation, resources] and reviewed the manuscript.
+\newline
+\textsl{Senior Author} provided supervision, secured funding, and contributed to manuscript revision.
+\newline
+All authors engaged in critical review and approved the final version of the manuscript.
+
+% ==============================================================================
+% PAPER II
+% ==============================================================================
+
+\section[Paper \RNum{2}]{\hyperref[Paper2]{\color{black}{Paper \RNum{2} \small(p.~\pageref{Paper2})}}}
+\label{paperoverview:paper2}
+\vspace{7mm}
+\textsf{\bf\acl{paper2title}}
+\\[4mm]
+by \textit{\acl{paper2authors}}
+\\[2mm]
+\noindent\href{https://doi.org/10.5678/your.doi.here}{doi:10.5678/your.doi.here}
+
+\noindent\textbf{\textsf{Abstract:}}~%
+This is where you paste the complete abstract from your second paper.
+Follow the same guidelines as for Paper I: provide context, describe methods, present key results, and explain significance.
+The abstract should be self-contained and give readers a complete picture of the paper's contribution.
+For software papers, describe what the software does, what problem it solves, what features it provides, and how it has been validated or applied.
+For methodological papers, explain the theoretical contribution, the algorithm or approach, its advantages over existing methods, and any empirical validation.
+Maintain a clear, professional tone and avoid jargon where possible.
+If domain-specific terms are necessary, ensure they are properly introduced or defined.
+
+\subsection*{Scientific Contributions}
+
+The [software package/method/framework] has been [describe its history, usage, or context in the field].
+However, [describe the problem or limitation that motivated your work].
+[Provide relevant statistics or evidence supporting the need for improvement].
+\newline
+This project addressed the critical need to [describe what you improved, refactored, or developed].
+The existing [system/method/codebase] had [describe specific problems].
+Before adding new features, [explain why foundational work was needed].
+\newline
+[Describe your first major contribution, e.g., comprehensive testing, refactoring, new algorithms].
+This [what it achieved or uncovered].
+[Provide specific examples of improvements or bugs fixed].
+\newline
+[Describe your second major contribution, e.g., CI/CD pipeline, parallelization, new features].
+This [explain the technical challenge and your solution].
+[Describe the impact or benefits].
+\newline
+[Describe your core scientific/technical contribution].
+The [method/framework/implementation] was extended to [new capability].
+[Explain any technical innovations or challenges overcome].
+\newline
+The documentation was [improved/created/updated] to enhance [usability, accessibility, adoption].
+[Describe specific documentation improvements].
+\newline
+In summary, [number] new versions were released, representing significant improvements in [key areas].
+This publication aligns with [relevant standards or guidelines, e.g., FAIR principles].
+[Mention any additional planned contributions or community impact].
+
+\subsection*{Authors Contributions}
+
+\textsl{Your Name} led the [specific technical contributions], developed [specific components], implemented [specific features], and authored the manuscript.
+\newline
+\textsl{Co-Author Name} designed and implemented [specific technical contribution], provided expertise in [domain], and contributed to [specific aspect].
+\newline
+\textsl{Another Co-Author} provided [supervision, funding, scientific guidance], contributed to [methodological development], and [other specific contribution].
+\newline
+\textsl{Senior Author} provided overall supervision, scientific guidance, financial support, and [other specific contributions].
+\newline
+[If applicable] The authors acknowledge the contributions of previous developers, particularly [names], whose earlier work established the foundation for this version.
+
+% ==============================================================================
+% PAPER III
+% ==============================================================================
+
+\section[Paper \RNum{3}]{\hyperref[Paper3]{\color{black}{Paper \RNum{3} \small(p.~\pageref{Paper3})}}}
+\label{paperoverview:paper3}
+\vspace{7mm}
+\textsf{\bf\acl{paper3title}}
+\\[4mm]
+by \textit{\acl{paper3authors}}
+\\[2mm]
+\textit{Submitted Manuscript}
+% OR: \noindent\href{https://doi.org/10.9012/your.doi.here}{doi:10.9012/your.doi.here}
+% OR: \textit{In Preparation}
+
+\subsection*{Abstract}
+
+This is where you paste the complete abstract from your third paper.
+For papers that build on previous work in your thesis, you may want to briefly acknowledge that connection in the Scientific Contributions section below, but the abstract itself should stand alone.
+Third papers in a cumulative dissertation often represent the culmination or synthesis of insights from earlier work, applying developed methods to new datasets, or extending frameworks to more complex scenarios.
+Ensure the abstract clearly articulates how this work contributes uniquely beyond your previous publications.
+Describe the specific research question, the dataset or experimental setup, the analytical approach, key findings, and implications for the field.
+Emphasize any novel applications, methodological extensions, or important empirical results.
+
+\subsection*{Scientific Contributions}
+
+Building on the foundations established in previous publications, this project represents [describe how it extends or synthesizes earlier work].
+This work [describe the specific advancement or application].
+\newline
+This work employs [specific method or framework] to [describe capability].
+This methodological innovation allows for [specific advancement].
+The [method/framework] supports [specific data types or capabilities], addressing a critical gap in [domain] and extending capacity for [specific application].
+\newline
+A key contribution is [describe major technical or empirical contribution, e.g., data curation, novel algorithm, large-scale validation].
+This process ensures [specific benefits] and enhances [specific qualities].
+\newline
+By applying [your method], we are able to [specific achievements].
+Notably, our results show that [key finding or insight].
+\newline
+The [method/framework] demonstrates [specific performance improvement or capability].
+For example, [provide concrete example with metrics if available].
+This underlines the value of [your approach] in [application domain] and provides a robust template for future research.
+\newline
+All [computational tools, code, protocols] are made available to the community in alignment with [relevant principles, e.g., open science, FAIR].
+This transparency supports [reproducibility, future development, community benefit].
+\newline
+Taken together, this work [summarize overall impact].
+The developed framework is [extensibility statement] to other [domains or applications] where [relevant challenges] are central.
+
+\subsection*{Authors Contributions}
+
+\textsl{Your Name} conceived and designed the study, led [specific activities], developed and implemented [specific technical work], conducted [analysis activities], interpreted results, and drafted, revised, and finalized the manuscript.
+\newline
+\textsl{Co-Author Name} provided [domain expertise], facilitated [specific contribution such as data acquisition], and critically revised the manuscript for [specific aspects].
+\newline
+\textsl{Another Co-Author} supported [specific contribution] and participated in manuscript review.
+\newline
+\textsl{Senior Author 1} provided expert supervision in [specific domain], contributed to [specific aspects], and reviewed the manuscript.
+\newline
+\textsl{Multiple Collaborators} were responsible for [specific contributions such as data acquisition, resources, or expertise] at their respective institutions.
+\newline
+[If applicable] \textsl{Consortium Name} provided [specific resources or contributions].
+\newline
+\textsl{Senior Author 2} oversaw [specific aspects], secured funding, facilitated [collaboration or resources], and participated in [manuscript preparation].
+\newline
+All authors contributed to the interpretation of results and approved the final version of the manuscript.
+
+% ==============================================================================
+% END TEMPLATE EXAMPLE STRUCTURE
+% ==============================================================================
+
+\section*{Additional Notes}
+
+\subsection*{Including Figures}
+
+If a figure significantly enhances understanding (e.g., download statistics, workflow diagram, key result visualization), include it:
+
+\begin{verbatim}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{Figures/your_figure.pdf}
+    \caption{Your descriptive caption here. Explain what the figure 
+    shows and why it is relevant.}
+    \label{fig:your_label}
+\end{figure}
+\end{verbatim}
+
+Reference it in text with: \texttt{(\textbackslash ref\{fig:your\_label\})}
+
+\subsection*{Managing Long Author Lists}
+
+For papers with many authors or consortia:
+\begin{itemize}
+    \item List key contributors individually with specific roles
+    \item Group remaining authors: "Additional co-authors contributed..."
+    \item Acknowledge consortia: "The [Consortium Name] provided..."
+    \item Be specific about your contributions as first author
+\end{itemize}
+
+\subsection*{Consistency Checklist}
+
+Before finalizing, verify:
+\begin{itemize}
+    \item All acronyms are defined before the chapter command
+    \item All section labels match references in other chapters
+    \item All DOIs are accurate and hyperlinks work
+    \item Page references are correct (compile twice)
+    \item Formatting is consistent across all papers
+    \item Author contribution statements match published versions
+    \item All figures are properly referenced and captioned
+    \item Scientific contributions avoid redundancy across papers
+    \item Language and tone are consistent throughout
+\end{itemize}
+
+\subsection*{Connection to Thesis Narrative}
+
+In your Introduction and Conclusion chapters, reference specific contributions:
+\begin{verbatim}
+As demonstrated in Paper I (see Section~\ref{paperoverview:paper1})...
+\end{verbatim}
+
+This creates a cohesive narrative connecting your papers to the overall thesis argument.
+

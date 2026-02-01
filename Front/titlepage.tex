@@ -11,57 +11,59 @@
 \setlength{\parskip}{0pt}
 
 \begin{center}
-\includegraphics[width=0.15\textwidth]{Figures/zhaw_rgb}
-
-\ifxetex
-    \vspace{0.6cm}
-    {\zhawtitlefont\color{zhawblue}\LARGE \univname\par}   % University
-    \vspace{0.2cm}
-\else
-    \vspace{0.87cm}
-    {\includegraphics[height=17.9pt]{Figures/zhaw_font_eng_font}\par}
-    \vspace{0.05cm}
-\fi
-{\Large Department \deptname\par}                      % Department
-\vspace{0.2cm}
-{\Large \instname\par}                                 % Institute
-\vspace{3.5cm}                            
-\textsc{\Large \ttype}                                 % Thesis type
-\vspace{0.2cm}
-\HRule 
+% {\includegraphics[width=0.25\textwidth]{Figures/uzh-logo-black.png} \par}
 \vspace{0.4cm}
 {\huge \bfseries \ttitle\par}                          % Thesis title
 \vspace{0.4cm}  
 \HRule
-\vspace{1.5cm}
-
- 
-\begin{minipage}[t]{0.4\textwidth}
-\begin{flushleft} 
-    \large
-    \emph{Author:}\\
-    \authorname
-\end{flushleft}
-\end{minipage}
-\begin{minipage}[t]{0.4\textwidth}
-\begin{flushright} 
-    \large
-    \emph{Supervisor\ifdefempty{\supnameB}{}{s}:}\\
-    \supnameA
-    \ifdefempty{\supnameB}{}{\\ \supnameB}
-\end{flushright}
-\end{minipage}
-\vspace{2cm}
+\vspace{3.0cm}                            
+\ifthenelse{\equal{\draft}{true}}{%
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[opacity=0.3, scale=4, rotate=30] at (current page.center) {\textbf{Entwurf Version: \ifdefempty{\commit}{unknown}{\StrLeft{\commit}{7}}}};
+    \end{tikzpicture}
+}{%
+    \vspace{0.2cm}
+}
+{\Large Dissertation\par}
+\vspace{0.2cm}
+{\Large zur\par}
+\vspace{0.2cm}
+{\Large Erlangung der naturwissenschaftlichen Doktorwürde\par}
+{\Large (Dr. sc. nat.)\par}
+\vspace{0.2cm}
+{\Large vorgelegt der\par}
+\vspace{0.2cm}
+{\Large \deptname\par}
+\vspace{0.2cm}
+{\Large der\par}\vspace{0.2cm}
+\vspace{0.2cm}
+{\Large \univname\par}
+\vspace{0.2cm}
+{\Large von\par}
+\vspace{0.8cm}
+{\textsc{\Large \authorname} \par}
+\vspace{0.2cm}
+\ifthenelse{\equal{\authCOO}{Schweiz}}{%
+    {\Large von \par}
+}{%
+    \ifthenelse{\equal{\authCOO}{Switzerland}}{%
+        {\Large von \par}
+    }{%
+        {\Large aus \par}
+    }%
+}
+\vspace{0.2cm}
+{\Large \authPOB \par}
+\vspace{0.8cm}
+{\Large Promotionskommission\par}
+{\supnameA \space (Vorsitz)\par}
+{\ifdefempty{\supnameB}{}{\supnameB} \par }
+{\ifdefempty{\supnameC}{}{\supnameC} \par }
+{\ifdefempty{\supnameD}{}{\supnameD} \par }
  
 \vfill
 
-{\large
-Submitted on\\
-\tdate\\
-\vspace{1.5cm}
-Study program:\\
-\studyprog\\
-}
+{\large \placeofsub, \ifdefempty{\datofsub}{\tdate}{\datofsub}}
 \vfill
 \end{center}
 \end{titlepage}

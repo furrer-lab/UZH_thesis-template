@@ -1,0 +1,101 @@
+% !TEX root = ../main.tex
+% The above command indicates the main file. Must go at the beginning of the file.
+
+\chapter{Introduction} 
+\label{Introduction}
+
+The Introduction chapter establishes the research context, motivates the problem, introduces key concepts, and outlines the thesis structure. A typical introduction is 15--25 pages long, though this may vary depending on your field and institutional requirements.
+
+The first section of your introduction should provide broad context and motivation. Start with the big picture: why does your research area matter? Then progressively narrow down to your specific research topic. This funnel approach helps readers understand where your work fits in the broader scientific landscape.
+
+When writing your introduction, use the \verb|\gls{}| command for the first mention of acronyms. Subsequent uses will automatically show only the abbreviation. Define all acronyms in the file \texttt{Front/abbreviations.tex}. Chapter titles should be concise yet descriptive enough to convey the main topic.
+
+\section{Your Research Field Context}
+
+This section should be approximately 3--5 pages and accomplish several goals. First, establish the broader scientific context of your work. Explain why this research field is important: what real-world problems does it address? What fundamental scientific questions does it tackle? Second, highlight recent advances that have made your research possible or necessary. Finally, identify the remaining challenges that motivate your specific contribution.
+
+Remember to use the \verb|\gls{}| command for the first mention of key technical terms. For paragraph breaks, you can use \verb|\newline| instead of blank lines in certain contexts where more control over spacing is needed. When writing compound adjectives, use an en-dash (two hyphens: \verb|--|) as in ``decision--making'' or ``patient--level analysis.''
+
+\subsection{Specific Challenge or Gap \#1}
+
+Each subsection should be 1--2 pages and address a specific aspect or challenge in your research area. Begin by clearly explaining the challenge, then cite relevant literature to demonstrate that this is a recognized problem in the field. Finally, explain why current approaches are insufficient. This sets up the need for your contribution.
+
+For example, you might discuss technical limitations, scalability issues, lack of generalizability, or gaps in theoretical understanding. Be specific about what exactly is missing or problematic in current work.
+
+\subsection{Specific Challenge or Gap \#2}
+
+When citing multiple sources, separate them with commas but no spaces in the citation command. Describe the second major challenge your field faces, providing historical context if relevant. Trace how researchers have attempted to address this problem over time and explain the current state-of-the-art approaches.
+
+This historical perspective helps readers understand why the problem has persisted and what makes it difficult to solve. It also demonstrates your command of the literature and positions you as a knowledgeable contributor to the field.
+
+\subsection{Your Methodological Approach}
+
+In this subsection, introduce your main methodological framework. What approach do you take to address the challenges outlined above? Explain the core methodology you employ throughout your thesis and describe its key advantages over alternative approaches.
+
+Provide concrete examples of successful applications of this methodology, either from your own preliminary work or from the broader literature. This helps readers understand not just the theoretical merits of your approach, but its practical value.
+
+\subsection{Positioning Your Work}
+
+This subsection positions your specific work within the research landscape you have described. Use the \verb|\fixedspaceword{}| command for hyphenated compound words that should not break across lines, ensuring readability.
+
+Clearly state what makes your work unique. What specific gap does your research fill? How do your contributions advance the field beyond the current state-of-the-art? Preview your key contributions here, but save detailed descriptions for later chapters.
+
+For instance: ``This thesis addresses these limitations by developing a novel framework for [your approach]. Unlike previous work, our method [key distinguishing feature]. This enables [important capability or insight] that was not previously possible.''
+
+Depending on your thesis structure and institutional requirements, you may include additional sections here such as Problem Statement, Scope and Limitations, or Ethical Considerations. Common additional sections include a clear problem statement that articulates the specific problem you address, a discussion of scope and limitations that clarifies what is and is not covered in your thesis, and a preview of your key contributions as a bulleted list.
+
+\section{Research Questions}
+\label{sec:researchquestions}
+
+Number your research questions clearly, as you will reference them throughout your thesis. Each research question should be specific, answerable, and focused. Avoid overly broad questions like ``How can we improve X?'' Instead, ask targeted questions like ``What factors influence Y under condition Z?'' or ``To what extent does method A outperform method B for task C?''
+
+This thesis addresses the following research questions:
+
+\begin{enumerate}
+    \item \textbf{Research Question 1:} How can [specific method] be adapted to address [specific challenge] in [specific context]?
+    \label{rq:1}
+    
+    \item \textbf{Research Question 2:} What is the relationship between [variable A] and [variable B] when [specific condition]?
+    \label{rq:2}
+    
+    \item \textbf{Research Question 3:} To what extent does [proposed approach] improve upon [existing method] for [specific application]?
+    \label{rq:3}
+\end{enumerate}
+
+Add or remove research questions as needed for your thesis. Typically, three to five well-crafted research questions provide sufficient focus. The questions should build on each other logically, often progressing from more fundamental questions about methods or mechanisms to questions about applications or implications.
+
+\section{Thesis Structure}
+
+This section provides a brief roadmap of your thesis, helping readers navigate the document and understand how the pieces fit together. Keep each chapter description to one or two sentences.
+
+This thesis is organized as follows:
+
+\textbf{Chapter~\ref{PaperOverview}} provides a comprehensive overview of the three papers included in this thesis, summarizing their abstracts, scientific contributions, and author contributions for transparency.
+
+\textbf{Chapter~\ref{Paper1}} presents our investigation of [brief description], demonstrating how [method] can be applied to [problem] with [main finding].
+
+\textbf{Chapter~\ref{Paper2}} describes the development of [tool/framework/method], which addresses [research question] by [approach taken].
+
+\textbf{Chapter~\ref{Paper3}} discusses the application of our framework to [real-world problem], revealing [key insight or result].
+
+\textbf{Chapter~\ref{chap:synthesis}} synthesizes the findings across all papers, explicitly addresses each research question posed above, discusses limitations and broader implications, and outlines promising directions for future research.
+
+If your thesis includes appendices with supplementary material, technical details, or additional analyses, mention them here as well. Use the \verb|\ref{}| command to reference chapters by their labels rather than hard-coding chapter numbers, which ensures consistency if you reorganize your thesis.
+
+\section*{Special LaTeX Commands Reference}
+
+This section provides a quick reference for common commands used in thesis writing. Remove this section from your final thesis.
+
+\subsection*{Glossary and Acronyms}
+Use \verb|\gls{acronym}| for the first use (shows full form) and subsequent uses (shows abbreviation only). For plural forms, use \verb|\glspl{acronym}|. For capitalized forms at sentence beginnings, use \verb|\Gls{acronym}|. To force the full form, use \verb|\acrfull{acronym}|, and to force the abbreviation, use \verb|\acrshort{acronym}|.
+
+\subsection*{Citations}
+Use \verb|\autocite{key}| for standard citations and \verb|\textcite{key}| for textual citations where the author name is part of the sentence (e.g., ``Smith et al. \textbackslash textcite\{smith2020\} demonstrated that...'').
+
+\subsection*{Cross-References}
+Create labels with \verb|\label{sec:name}| and reference them with \verb|\ref{sec:name}|. For better readability, add descriptors: \verb|Section~\ref{sec:name}|, \verb|Chapter~\ref{chap:intro}|, or \verb|Figure~\ref{fig:results}|.
+
+\subsection*{Typography}
+Use \verb|\fixedspaceword{text}| to prevent line breaks in compound words. For dashes, remember: single hyphen (-) for compound words like ``well-known''; double hyphen or en-dash (--) for ranges like ``pages 10--25'' and compound terms like ``patient--level''; triple hyphen or em-dash (---) for breaks in thought or parenthetical statements.
+
+Use \verb|\newline| to force a line break within a paragraph without starting a new paragraph.

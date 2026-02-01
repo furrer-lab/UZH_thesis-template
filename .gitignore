@@ -11,6 +11,7 @@
 *.out
 *.lof
 *.lot
+*.ist
 
 # PDF output - usually a bad idea to keep this in Git
 main.pdf

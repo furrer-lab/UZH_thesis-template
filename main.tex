@@ -1,7 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This is a LaTeX template for Bachelor or Master theses at ZHAW, in accordance with the 
-% guidelines provided here:
-% https://www.zhaw.ch/en/lsfm/study/studiweb/master-ls/masters-thesis/
+% This is a LaTeX template for dissertations at the 
+% "Mathematische und Naturwissenschaftliche Fakultät" of the Universität Zürich.
 %
 %
 % This template is based on previous works by:
@@ -68,58 +67,84 @@
 % - Abstract / Zusammenfassung
 % - Meta information of PDF
 
-\thesistitle{Project Title}             % Thesis title,              command: \ttitle
-\thesistype{Track Module 1}             % Type of thesis (e.g. Master Thesis) \ttype
+\drafting{false}                 % true or false, draft version will add a timestamp and version number to the footer
+\thesistitle{Dissertation Title}             % Thesis title,              command: \ttitle
+\thesistype{Dissertation}             % Type of thesis (e.g. Master Thesis) \ttype
 \thesisdate{\today}                     % Date of submission                  \tdate
-\keywords{gravity, physics, disruptive science}
+% \todo{check keywords}
+\keywords{keyword1, keyword2, keyword3}  % Keywords for the thesis,            \keywordnames
                                         % Keywords for the thesis,            \keywordnames
-\author{Maxine Muster}                  % Your name,                          \authorname
-\degree{Master of Science ZFH}          % Degree name,                        \degreename
-\studyprogram{Applied Computational Life Sciences, M.Sc.} 
+\author{Jane Doe}                  % Your name,                          \authorname
+\authorPOB{Somewhere, ZH}                    % Place of birth with Canton/State.                    \authPOB
+\authorCOO{Anycountry}                   % Country of origin. Either Schweiz, Switzerland or anything else. It will affect the preposition "von"/"aus" on the title page.                  \authCOO
+\placeofsubmission{Z\"urich}              % Place of submission,                \placeofsub
+% \todo{Update date of submission}
+\dateofsubmission{2025}             % Date of submission,                 \datofsub
+\degree{Dr. sc. nat.}          % Degree name,                        \degreename
+\studyprogram{PhD in Data Science} 
                                         % Study program                       \studyprog
-\studyprogramlink{https://www.zhaw.ch/en/lsfm/study/master/applied-computational-life-sciences/}
+\studyprogramlink{https://www.mnf.uzh.ch/en/studium/reglemente/phd.html}
                                         % Link to study program               \studyproglink
 
-\supervisorA{Dr. Albert Einstein}       % Name of supervisor 1,               \supnameA
-\supervisorAmail{e=mc2@zhaw.ch}         % Email address of supervisor 1,      \supmailA
-\supervisorAweb{https://en.wikipedia.org/wiki/Albert\_Einstein}  %            \supwebA
+% Add the head of the committee as supervisorA
+\supervisorA{Ms. Ada Lovelace}          % Name of supervisor 1,               \supnameA
+\supervisorAmail{ada@algorithm.ch}      % Email address of supervisor 1,      \supmailA
+\supervisorAweb{https://en.wikipedia.org/wiki/Ada\_Lovelace}     %            \supwebA
 \supervisorAinfo{                       % Formatted info about supervisor 1:  \supinfoA
     \supnameA\\
-    Zurich University of Applied Sciences\\
+    University of London\\
     Email: \href{mailto:\supmailA}{\supmailA}\\
     Web: \href{\supwebA}{Link}
 }
 
-% Keep empty if there is no supervisor 2: \supervisorB{}
-\supervisorB{Isaac Newton}              % Name of supervisor 2,               \supnameB
-\supervisorBmail{f=am@newton.com}       % Email address of supervisor 2,      \supmailB
-\supervisorBweb{https://en.wikipedia.org/wiki/John\_Locke}                  % \supwebB
+
+% Second supervisor (Committee member)
+\supervisorB{Prof. Dr. Marie Curie}         % Name of supervisor 2,               \supnameB
+\supervisorBmail{nobel2@sorbonne.fr}    % Email address of supervisor 2,      \supmailB
+\supervisorBweb{https://en.wikipedia.org/wiki/Marie\_Curie}      %            \supwebB
 \supervisorBinfo{                       % Formatted info about supervisor 2:  \supinfoB
     \supnameB\\
-    University of Cambridge\\
+    Sorbonne University\\
     Email: \href{mailto:\supmailB}{\supmailB}\\
     Web: \href{\supwebB}{Link}
 }
 
-\university{Zurich University of Applied Sciences}
-                                        % University name                     \univname
-\universitygerman{Zürcher Hochschule für Angewandte Wissenschaften}
-                                        % University, in German               \univnameger
-\unversityabbr{ZHAW}                    % University abbreviation             \univabbr
+% Third supervisor (Committee member)
+\supervisorC{Prof. Dr. Albert Einstein}       % Name of supervisor 1,               \supnameA
+\supervisorCmail{e=mc2@ethz.ch}         % Email address of supervisor 1,      \supmailA
+\supervisorCweb{https://en.wikipedia.org/wiki/Albert\_Einstein}  %            \supwebA
+\supervisorCinfo{                       % Formatted info about supervisor 1:  \supinfoA
+    \supnameC\\
+    Universität Zürich\\
+    Email: \href{mailto:\supmailC}{\supmailC}\\
+    Web: \href{\supwebC}{Link}
+}
 
-\department{Life Sciences and Facility Management} 
-                                        % Department,                         \deptname
-\institute{Institute of Computational Life Sciences} 
-                                        % Institute,                          \instname
-\group{Center of Computational Health} 
-                                        % Research group                      \groupname
+% Fourth supervisor (Committee member)
+\supervisorD{Prof. Isaac Newton}              % Name of supervisor 2,               \supnameB
+\supervisorDmail{f=am@newton.com}       % Email address of supervisor 2,      \supmailB
+\supervisorDweb{https://en.wikipedia.org/wiki/John\_Locke}                  % \supwebB
+\supervisorDinfo{                       % Formatted info about supervisor 2:  \supinfoB
+    \supnameD\\
+    University of Cambridge\\
+    Email: \href{mailto:\supmailD}{\supmailD}\\
+    Web: \href{\supwebD}{Link}
+}
+
+\university{Universit\"at Z\"urich}                                        % University name. UZH does always use the german name.                     \univname
+\universitygerman{Universit\"at Z\"urich}                                  % University, in German               \univnameger
+\unversityabbr{UZH}                    % University abbreviation             \univabbr
+
+\department{Mathematisch-naturwissenschaftlichen Fakultät}                                         % Department,                         \deptname
+\institute{Department of Mathematical Modeling and Machine Learning}                                         % Institute,                          \instname
+\group{Applied Statistics}                                         % Research group                      \groupname
 
 % Links
-\universitylink      {https://www.zhaw.ch/en/university/}                   % \univlink
-\universitylinkgerman{https://www.zhaw.ch/de/university/}                   % \univlinkger
-\departmentlink      {https://www.zhaw.ch/de/lsfm/}                         % \deptlink
-\institutelink       {https://www.zhaw.ch/en/lsfm/institutes-centres/icls/} % \instlink
-\grouplink           {https://www.zhaw.ch/en/lsfm/institutes-centres/icls/computational-health/} % \grplink
+\universitylink      {https://www.uzh.ch/en.html}                   % \univlink
+\universitylinkgerman{https://www.uzh.ch/de.html}                   % \univlinkger
+\departmentlink      {https://www.mnf.uzh.ch/en.html}               % \deptlink
+\institutelink       {https://dm3l.uzh.ch/home}                     % \instlink
+\grouplink           {https://www.math.uzh.ch/as/}                  % \grplink
 
 
 
@@ -139,6 +164,24 @@
 % TITLE PAGE AND IMPRINT
 %----------------------------------------------------------------------------------------
 \include{Front/titlepage}
+
+% If the draft option is enabled, include the todo list
+\ifthenelse{\equal{\draft}{true}}{%
+    \let\cleardoublepage\relax % Prevent page breaks
+    \section*{Todo List Legend}
+    \vspace{-1em} % Adjust spacing to keep the tikzpicture close to the section header
+    \begin{tikzpicture}
+        \node[fill=red, rounded corners, text width=2.5cm, align=center] (node1) {\textbf{decision required}};
+        \node[fill=orange, rounded corners, text width=2.5cm, align=center, right=of node1] (node2) {\textbf{medium priority}};
+        \node[fill=lightgray, rounded corners, text width=2.5cm, align=center, right=of node2] (node3) {\textbf{low priority}};
+    \end{tikzpicture}
+    % \vspace{1em} % Adjust spacing to keep the list close to the tikzpicture
+    \newline
+    \listoftodos
+}{%
+    % Do nothing
+}
+
 \let\cleardoublepage\clearpage
 \include{Front/imprint}
 
@@ -146,8 +189,8 @@
 %----------------------------------------------------------------------------------------
 % DECLARATION
 %----------------------------------------------------------------------------------------
-% Comment out this section if the declaration of originality from ZHAW is used.
-\include{Front/declaration}
+% Use this section to include a declaration regarding the use of Generative AI
+\include{Front/declarationGenAI}
 \cleardoublepage
 
 
@@ -175,14 +218,17 @@
 %----------------------------------------------------------------------------------------
 % ABBREVIATIONS / SYMBOLS
 %----------------------------------------------------------------------------------------
-\include{Front/symbols}
-
+\printabbreviations
 
 %----------------------------------------------------------------------------------------
 % DEDICATION
 %----------------------------------------------------------------------------------------
-\dedicatory{For/Dedicated to/To my\ldots} 
+\dedicatory{To coffee, without which this thesis would have been written in my sleep.}
 
+%----------------------------------------------------------------------------------------
+% EPIGRAPH
+%----------------------------------------------------------------------------------------
+\printepigraph{The magic is not in the analyzing or the understanding. The magic lives in the wonder of what we do not know.}{Rick Rubin}{The Creative Act: A Way of Being}
 
 %----------------------------------------------------------------------------------------
 % THESIS CONTENT - CHAPTERS
@@ -194,12 +240,17 @@
 % Include the chapters of the thesis as separate files from the Chapters folder
 % Uncomment the lines as you write the chapters
 
-\include{Chapters/Chapter1}
-\include{Chapters/Chapter2} 
-%\include{Chapters/Chapter3}
-%\include{Chapters/Chapter4} 
-%\include{Chapters/Chapter5} 
+\include{Chapters/Introduction}
+\include{Chapters/PaperOverview} 
+\include{Chapters/paper1}
+% \include{Chapters/paper2}
+% \include{Chapters/paper3}
+\include{Chapters/Conclusion}
 
+%----------------------------------------------------------------------------------------
+% BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+\printbibliography[heading=bibintoc]
 
 %----------------------------------------------------------------------------------------
 % THESIS CONTENT - APPENDICES
@@ -209,16 +260,8 @@
 % Include the appendices of the thesis as separate files from the Appendices folder
 % Uncomment the lines as you write the Appendices
 \include{Appendices/AppendixA}
-% from https://www.zhaw.ch/en/lsfm/study/studiweb/master-ls/masters-thesis/
 %\include{Appendices/AppendixB}
 %\include{Appendices/AppendixC}
-\include{Appendices/DeclarationOfOriginalityZHAW} 
-
-
-%----------------------------------------------------------------------------------------
-% BIBLIOGRAPHY
-%----------------------------------------------------------------------------------------
-\printbibliography[heading=bibintoc]
 
 %----------------------------------------------------------------------------------------
 

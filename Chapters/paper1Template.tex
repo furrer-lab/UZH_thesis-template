@@ -1,0 +1,109 @@
+% Indicate the main file. Must go at the beginning of the file.
+% !TEX root = ../main.tex
+
+%----------------------------------------------------------------------------------------
+% PAPER I - TUTORIAL
+%----------------------------------------------------------------------------------------
+
+\chapter*{Tutorial: Including Published Papers in Your Thesis}
+\addcontentsline{toc}{chapter}{Paper I: Tutorial Guide}
+
+\section*{Overview}
+
+This tutorial explains how to include a published or submitted paper as a PDF chapter in your thesis. This approach is common in paper-based theses where papers are included as they were published in journals, preserving their original formatting and layout.
+
+\section*{Setting Up the Chapter Heading}
+
+You have two options for creating the chapter heading. The first option creates a numbered chapter that will appear in the table of contents with an automatic chapter number using the standard \texttt{\textbackslash chapter} command with optional short and full titles.
+
+The second option, which is more convenient for paper-based theses, creates an unnumbered chapter with a manual table of contents entry which gives you complete control over how the paper appears in the table of contents. You can format it as "Paper I" followed by the full paper title, maintaining consistency across all included papers.
+
+\section*{Formatting Author and Publication Information}
+
+After the chapter heading, you should display the author list and publication information. 
+The author list typically uses emphasized italic formatting at a larger font size, followed by appropriate vertical spacing for visual clarity.
+Below the author list, you need to indicate the publication status of your paper. 
+For published papers, include the journal name in italics along with the DOI as a clickable hyperlink. This allows readers to easily access the original publication online.
+If your paper has been submitted but not yet published, you can indicate this by stating "Unpublished Manuscript" followed by the name of the journal where it was submitted. For papers that have been accepted but are not yet in print, use "Accepted for publication" with the journal name and note that it is "In Press".
+For preprints available on arXiv or similar platforms, state "Published in arXiv" and provide the arXiv identifier as a hyperlink. This ensures readers can access the preprint version while awaiting formal publication.
+
+\section*{Cross-Referencing and Page Setup}
+
+Create a label for the chapter using \texttt{\textbackslash label\{Paper1\}} so you can reference this paper elsewhere in your thesis. This is particularly useful when discussing the paper's contributions in your introduction or conclusion chapters.
+Before including the PDF, ensure you start a new page and set the page style to plain. The \texttt{\textbackslash cleardoublepage} command ensures the paper starts on a right-hand page in two-sided printing, which is the conventional placement for new chapters.
+
+\section*{Including the PDF File}
+
+The basic approach for including a PDF uses the \texttt{\textbackslash includepdf} command with several parameters. The \texttt{pages=-} option includes all pages from the PDF. The \texttt{trim} parameter allows you to adjust margins if needed, while \texttt{width=1.2\textbackslash textwidth} scales the PDF to 120\% of the text width, which is a common setting that maintains readability while fitting journal-formatted pages onto thesis pages.
+
+\section*{Advanced PDF Inclusion Options}
+
+Sometimes you need more control over which pages to include. You can specify a page range such as pages 1 through 10 if you only want to include part of the paper. This is useful when excluding supplementary materials that appear elsewhere in your thesis.
+
+For papers with non-contiguous sections, you can use multiple \texttt{\textbackslash includepdf} commands with different page ranges.
+
+Some papers contain large tables or figures in landscape orientation. To handle these properly, you can include portrait pages normally, then use the \texttt{angle=90} parameter to rotate landscape pages by 90 degrees. After the landscape section, continue with remaining portrait pages. This ensures all content appears correctly oriented in the final thesis.
+
+\section*{Scaling and Formatting Options}
+
+You have several options for adjusting how the PDF appears on the page. 
+Setting \texttt{width=1.2\textbackslash textwidth} scales to 120\% of the text width, which works well for most journal articles. 
+Using \texttt{width=\textbackslash textwidth} scales to the exact text width, while \texttt{height=\textbackslash textheight} scales to the page height. 
+The \texttt{fitpaper=true} option automatically fits the PDF to the page size.
+
+If you want page numbers to appear in the thesis style rather than the original paper's style, you can add \texttt{pagecommand=\{\textbackslash thispagestyle\{plain\}\}} to the include command. This overrides the PDF's original page numbering with your thesis's numbering scheme.
+
+\section*{File Organization}
+
+Organize your PDF files by placing them in the \texttt{Chapters/papers/} directory. 
+Use descriptive filenames like \texttt{descriptive-name.pdf} or simple sequential names like \texttt{paper1.pdf}, \texttt{paper2.pdf}. Consistent naming makes it easier to manage multiple papers and reduces the chance of errors when referencing files in your LaTeX code.
+
+\section*{Copyright and Permissions}
+
+Before including a published paper, verify that you have the rights to include it in your thesis. Check your journal's thesis inclusion policies, as most journals allow authors to include their published work in their thesis, but some may have specific requirements or restrictions.
+
+Some journals require an acknowledgment statement noting where the paper was originally published. Keep documentation of your permission to include the work, particularly if your institution requires proof for thesis submission or if the journal has specific terms.
+
+\section*{Alternative to PDF Inclusion}
+
+If you need to modify the paper's content or do not have permission to include the published PDF, you can recreate the paper in LaTeX. Instead of using \texttt{\textbackslash includepdf}, use \texttt{\textbackslash input\{\}} or \texttt{\textbackslash include\{\}} to incorporate a LaTeX file containing the paper's content. This gives you complete control over formatting but requires more work to maintain consistency with the published version.
+
+\section*{Implementation Checklist}
+
+To implement this in your own thesis, replace the placeholder filename with your actual PDF filename. Verify that the PDF is placed in the \texttt{Chapters/papers/} directory. Adjust page ranges and orientations as needed based on your paper's layout.
+Update the publication status to reflect whether your paper is published, submitted, accepted, or available as a preprint. Add the correct DOI or other publication identifiers so readers can locate the original publication. Finally, test the compilation and check that page numbers appear correctly in the table of contents and throughout the chapter.
+
+\section*{Working Example}
+
+Below is a complete working example demonstrating how to include a published paper. This example shows a paper titled "Bayesian network analysis reveals the interplay of intracranial aneurysm rupture risk factors" published in the journal Computers in Biology and Medicine.
+
+The example demonstrates several key elements. First, it creates an unnumbered chapter with the full paper title. The table of contents entry is manually added with "Paper I:" as a prefix, followed by the full title. This formatting ensures consistency across all papers in a paper-based thesis.
+
+The author list is displayed using emphasized italic formatting at a large font size, with vertical spacing of 0.7cm for visual separation. The publication information includes the journal name in italics, followed by the DOI as a clickable hyperlink. The DOI format uses the standard doi.org resolver, making it easy for readers to access the original publication.
+
+A label is created for cross-referencing purposes, allowing you to refer to this paper elsewhere in your thesis. The \texttt{\textbackslash cleardoublepage} command ensures the paper begins on a right-hand page, and the page style is set to plain for consistent formatting throughout the included paper.
+
+The PDF inclusion command specifies all pages using \texttt{pages=-}, no trimming of margins, and a width of 120\% of the text width. The PDF file is stored in the \texttt{Chapters/papers/} directory with the filename \texttt{bnaiar.pdf}, following the recommended file organization structure.
+
+\subsection*{Example LaTeX Code}
+
+Use this template as a starting point for including your first paper. Simply copy this code to a new file or replace the placeholders with your specific information.
+
+\begin{verbatim}
+% !TEX root = ../main.tex
+
+\chapter*{[Full Title of Your First Paper]}
+\addcontentsline{toc}{chapter}{Paper I:\\ [Full Title of 
+Your First Paper]}
+
+{\em \large [Author 1, Author 2, Author 3]}\\[0.7cm]
+{\large Published in {\em [Journal Name]}}\\[0.2cm]
+{\large \href{https://doi.org/[YOUR-DOI]}{doi:[YOUR-DOI]}}
+
+\label{Paper1}
+\cleardoublepage
+\pagestyle{plain}
+\includepdf[pages=-, trim=0cm 0cm 0cm 0cm, width=1.2\textwidth, 
+pagecommand={}]{Chapters/papers/[your-paper-filename].pdf}
+\end{verbatim}
+
